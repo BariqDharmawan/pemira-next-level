@@ -24,6 +24,11 @@
                             $goTo = route('dashboard');
                         @endphp
                         @break
+                    @case('calon')
+                        @php
+                            $goTo = route('calon.dashboard');
+                        @endphp
+                        @break
                     @default
                         
                 @endswitch
@@ -56,7 +61,14 @@
                         </a>
                     </li>
                     @break
-                @default
+                @case('calon')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('calon.lihat-profile') }}">
+                        <i class="ni ni-planet text-orange"></i>
+                        <span class="nav-link-text">Lengkapi profil</span>
+                        </a>
+                    </li>
+                    @break
                     
             @endswitch
           </ul>

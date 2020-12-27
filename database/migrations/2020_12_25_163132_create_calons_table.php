@@ -15,8 +15,8 @@ class CreateCalonsTable extends Migration
     {
         Schema::create('calon', function (Blueprint $table) {
             $table->id();
-            $table->text('visi');
-            $table->text('misi');
+            $table->text('visi')->nullable();
+            $table->text('misi')->nullable();
             $table->bigInteger('jumlah_pemilih')->nullable();
             $table->unsignedInteger('user_id');
             $table->timestamps();

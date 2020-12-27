@@ -37,6 +37,10 @@ class LoginController extends Controller
             case 'pemilih':
                 return 'pemilih/dashboard';
                 break;
+
+            case 'calon':
+                return 'calon/dashboard';
+                break;
         }
     }
 
