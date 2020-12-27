@@ -28,7 +28,11 @@ class PemilihController extends Controller
     public function pilihCalon()
     {
         $semuaCalon = Calon::all();
-        return view('pemilih.pilih-calon', ['semuaCalon' => $semuaCalon]);
+        $pemilih = User::where('id', Auth::id())->first();
+        return view('pemilih.pilih-calon', [
+            'semuaCalon' => $semuaCalon,
+            'pemilih' => $pemilih
+        ]);
     }
 
     public function submitCalon(Request $request, $id)
@@ -39,7 +43,7 @@ class PemilihController extends Controller
 
         $pemilih = Pemilih::where('user_id', Auth::id())->update(['sudah_memilih' => true]);
 
-        dd($calon->first(), $pemilih);
+        // dd($calon->first(), $pemilih);
         return redirect()->back()->with(
             'message',
             'kamu berhasil memilih calon bernama ' .
