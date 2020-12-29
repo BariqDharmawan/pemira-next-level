@@ -29,7 +29,6 @@ class PemilihController extends Controller
     {
         $semuaCalon = Calon::all();
         $pemilih = Pemilih::where('id', Auth::id())->first();
-        // dd(auth()->id(), $pemilih);
         return view('pemilih.pilih-calon', [
             'semuaCalon' => $semuaCalon,
             'pemilih' => $pemilih
@@ -42,12 +41,11 @@ class PemilihController extends Controller
         $calon = Calon::where('id', $id);
         $calon->increment('jumlah_pemilih', 1);
 
-        $pemilih = Pemilih::where('user_id', Auth::id())->update([
+        Pemilih::where('user_id', Auth::id())->update([
             'sudah_memilih' => true,
-            'pilihan_kamu' => $id
+            'pilihan_kamu' => $calon->first()->id
         ]);
 
-        // dd($calon->first(), $pemilih);
         return redirect()->back()->with(
             'message',
             'kamu berhasil memilih calon bernama ' .
