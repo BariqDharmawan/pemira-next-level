@@ -28,8 +28,7 @@ class PemilihController extends Controller
     public function pilihCalon()
     {
         $semuaCalon = Calon::all();
-        $pemilih = User::where('id', Auth::id())->first();
-        dd($pemilih->pemilih);
+        $pemilih = Pemilih::where('id', Auth::id())->first();
         return view('pemilih.pilih-calon', [
             'semuaCalon' => $semuaCalon,
             'pemilih' => $pemilih

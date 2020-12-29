@@ -11,7 +11,7 @@
                             <h3>Pilih calon</h3>
                         </div>
                         <div class="card-body">
-                            @if (isset($pemilih->detailPemilih->sudah_memilih) and ($pemilih->detailPemilih->sudah_memilih == true))
+                            @if ($pemilih->sudah_memilih == true)
                                 <div class="alert alert-success text-center mb-5" role="alert">
                                     Kamu telah memilih calon ketua, 
                                     tidak bisa memilih lagi
@@ -30,7 +30,7 @@
                                             </p>
                                         </div>
                                         <div class="card-action p-4 d-flex justify-content-between">
-                                            @if (isset(Auth::user()->detailPemilih->sudah_memilih) and (Auth::user()->detailPemilih->sudah_memilih == false))
+                                            @if ($pemilih->sudah_memilih == false)
                                                 <form method="POST"
                                                 action="{{ route('submit-pilihan', $calon->id) }}">
                                                     @csrf
