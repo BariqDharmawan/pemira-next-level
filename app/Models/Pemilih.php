@@ -16,4 +16,9 @@ class Pemilih extends Model
         'sudah_memilih',
         'user_id'
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'user_id', 'id')->withDefault();
+    }
 }

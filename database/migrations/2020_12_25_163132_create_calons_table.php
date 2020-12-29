@@ -19,6 +19,7 @@ class CreateCalonsTable extends Migration
             $table->text('misi')->nullable();
             $table->bigInteger('jumlah_pemilih')->nullable();
             $table->unsignedInteger('user_id');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

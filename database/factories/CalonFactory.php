@@ -26,9 +26,7 @@ class CalonFactory extends Factory
             'visi' => $this->faker->paragraph(5),
             'misi' => $this->faker->sentence(10),
             'jumlah_pemilih' => 0,
-            'user_id' => $this->faker->randomElement(
-                User::select('id')->where('role', 'calon')->get()
-            )
+            'foto' => 'calon.png'
         ];
     }
 }

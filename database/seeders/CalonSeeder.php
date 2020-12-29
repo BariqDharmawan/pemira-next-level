@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Calon;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,7 @@ class CalonSeeder extends Seeder
      */
     public function run()
     {
-        Calon::factory()->times(5)->create();
+        $user = User::factory()->create();
+        Calon::factory()->count(3)->for($user)->create();
     }
 }

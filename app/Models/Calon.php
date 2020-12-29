@@ -14,10 +14,11 @@ class Calon extends Model
         'visi',
         'misi',
         'jumlah_pemilih',
+        'foto',
         'user_id'
     ];
 
-    public function profile()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id')->withDefault();
     }
