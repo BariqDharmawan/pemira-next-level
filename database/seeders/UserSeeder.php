@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
                 Pemilih::create([
                     'nim' => 19105110 . $i,
                     'sudah_memilih' => false,
-                    'user_id' => $profile->id,
+                    'user_id' => $i
                 ]);
             } else {
                 $profile = User::create([
@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
                     'visi' => "visi calon $i",
                     'misi' => "misi calon $i",
                     'foto' => 'calon.png',
-                    'user_id' => $profile->id
+                    'user_id' => $i
                 ]);
             }
         }

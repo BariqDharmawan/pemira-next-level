@@ -17,7 +17,7 @@
                                             </h5>
                                             <span class="h2 font-weight-bold mb-0">
                                                 <var style="font-style: normal">
-                                                    {{-- {{ $totalCalon }} --}}
+                                                    {{ $totalCalon }}
                                                 </var>
                                                 <span>pasangan</span>
                                             </span>
@@ -41,7 +41,7 @@
                                                 Status memilih
                                             </h5>
                                             <span class="h2 font-weight-bold mb-0">
-                                                Kamu {{ $statusMemilih == true ? 'sudah' : 'belum' }}
+                                                Kamu {{ $statusMemilih === true ? 'sudah' : 'belum' }}
                                                 ikut voting
                                             </span>
                                         </div>
