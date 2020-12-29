@@ -26,8 +26,8 @@
                             @foreach ($semuaCalon as $calon)
                                 <div class="col-6">
                                     <div class="card">
-                                        <img class="rounded-circle" 
-                                        src="{{ 'test.png' }}">
+                                        <img height="100" width="100" class="d-block mx-auto my-4"
+                                        src="{{ Storage::url($calon->foto) }}">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $calon->user->email }}</h5>
                                             <p class="card-text">
