@@ -27,7 +27,7 @@ class CalonFactory extends Factory
             'misi' => $this->faker->sentence(10),
             'jumlah_pemilih' => 0,
             'foto' => 'calon.png',
-            'user_id' => $this->faker->randomElement([5, 6, 7, 8, 9])
+            'user_id' => $this->faker->numberBetween(8, 9)
         ];
     }
 }
