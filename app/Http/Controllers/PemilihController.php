@@ -29,6 +29,7 @@ class PemilihController extends Controller
     {
         $semuaCalon = Calon::all();
         $pemilih = User::where('id', Auth::id())->first();
+        dd($pemilih->pemilih);
         return view('pemilih.pilih-calon', [
             'semuaCalon' => $semuaCalon,
             'pemilih' => $pemilih

@@ -38,7 +38,7 @@ class PemilihFactory extends Factory
         return [
             'nim' => $this->faker->randomElement($semuaNim),
             'sudah_memilih' => false,
-            'user_id' => User::inRandomOrder()->first()->id
+            'user_id' => $this->faker->randomElement([1, 2, 3, 4])
         ];
     }
 }

@@ -11,7 +11,7 @@
                             <h3>Pilih calon</h3>
                         </div>
                         <div class="card-body">
-                            @if ($pemilih->detailPemilih->sudah_memilih == true)
+                            @if (isset($pemilih->detailPemilih->sudah_memilih) and ($pemilih->detailPemilih->sudah_memilih == true))
                                 <div class="alert alert-success text-center mb-5" role="alert">
                                     Kamu telah memilih calon ketua, 
                                     tidak bisa memilih lagi
@@ -22,15 +22,15 @@
                                 <div class="col-6">
                                     <div class="card">
                                         <img class="rounded-circle" 
-                                        src="{{ Storage::url($calon->profile->foto) }}">
+                                        src="{{ Storage::url($calon->user->foto) }}">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $calon->profile->email }}</h5>
+                                            <h5 class="card-title">{{ $calon->user->email }}</h5>
                                             <p class="card-text">
                                                 {{ $calon->visi }}
                                             </p>
                                         </div>
                                         <div class="card-action p-4 d-flex justify-content-between">
-                                            @if (Auth::user()->detailPemilih->sudah_memilih == false)
+                                            @if (isset(Auth::user()->detailPemilih->sudah_memilih) and (Auth::user()->detailPemilih->sudah_memilih == false))
                                                 <form method="POST"
                                                 action="{{ route('submit-pilihan', $calon->id) }}">
                                                     @csrf

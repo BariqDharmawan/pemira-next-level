@@ -15,7 +15,6 @@ class CalonSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::factory()->create();
-        Calon::factory()->count(3)->for($user)->create();
+        Calon::factory()->times(5)->create();
     }
 }
