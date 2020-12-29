@@ -14,7 +14,6 @@ class CalonController extends Controller
 
     public function dashboard()
     {
-        // dd(auth()->user()->role);
         switch (Auth::user()->role) {
             case 'admin':
                 return view('admin.dashboard', [
@@ -70,7 +69,6 @@ class CalonController extends Controller
             'visi' => $request->visi_calon,
             'misi' => $request->misi_calon
         ]);
-        // dd($inputVisiMisi);
         return redirect()->back()->with('message', 'kamu berhasil menambahkan visi dan misi');
     }
 }

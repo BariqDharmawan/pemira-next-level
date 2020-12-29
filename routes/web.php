@@ -26,4 +26,5 @@ Route::prefix('calon')->name('calon.')->group(function () {
     Route::get('dashboard', [CalonController::class, 'dashboard'])->name('dashboard');
     Route::get('lihat-profile', [CalonController::class, 'lihatProfile'])->name('lihat-profile');
     Route::post('submit-visi-misi', [CalonController::class, 'submitVisiMisi'])->name('submit-visi-misi');
+    Route::post('update-foto', [CalonController::class, 'updateFoto'])->name('update-foto');
 });

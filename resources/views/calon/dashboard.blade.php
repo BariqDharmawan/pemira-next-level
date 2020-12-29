@@ -16,7 +16,7 @@
                                                 Tanggal registrasi
                                             </h5>
                                             <span class="h2 font-weight-bold mb-0">
-                                                {{ $profilDirimu->created_at->format('D M Y H:i') }}
+                                                {{ $profilDirimu->user->created_at->format('D M Y H:i') }}
                                             </span>
                                         </div>
                                         <div class="col-auto">

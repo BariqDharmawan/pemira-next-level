@@ -11,10 +11,22 @@
                             <h1 class="h2">Profile mu</h1>
                         </div>
                         <div class="card-body">
+                            <img  class="card-img-top" alt="foto profile"
+                            src="{{ Storage::url($profilDirimu->foto) }}">
                             <p>Nama lengkap: {{ $profilDirimu->profile->nama }}</p>
                             <p>Email: {{ $profilDirimu->profile->email }}</p>
                             <p>Visi: {!! $profilDirimu->visi ?? '<b>Belum kamu isi</b>' !!}</p>
                             <p>Misi: {!! $profilDirimu->misi ?? '<b>Belum kamu isi</b>' !!}</p>
+                            <form action="{{ route('calon.update-foto') }}" method="POST">
+                                @csrf
+                                <p>Foto: </p>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="foto" lang="en">
+                                    <label class="custom-file-label" for="foto">
+                                        Select file
+                                    </label>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

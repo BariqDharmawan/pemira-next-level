@@ -11,7 +11,7 @@
                             <h3>Pilih calon</h3>
                         </div>
                         <div class="card-body">
-                            @if (Auth::user()->detailPemilih->sudah_memilih == true)
+                            @if ($pemilih->detailPemilih->sudah_memilih == true)
                                 <div class="alert alert-success text-center mb-5" role="alert">
                                     Kamu telah memilih calon ketua, 
                                     tidak bisa memilih lagi
