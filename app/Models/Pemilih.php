@@ -14,7 +14,8 @@ class Pemilih extends Model
     protected $fillable = [
         'nim',
         'sudah_memilih',
-        'user_id'
+        'user_id',
+        'pilihan_kamu'
     ];
 
     public function user()

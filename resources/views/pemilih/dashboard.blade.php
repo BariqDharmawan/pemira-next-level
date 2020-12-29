@@ -41,8 +41,8 @@
                                                 Status memilih
                                             </h5>
                                             <span class="h2 font-weight-bold mb-0">
-                                                {{-- Kamu {{ $statusMemilih == true ? 'sudah' : 'belum' }}
-                                                ikut voting --}}
+                                                Kamu {{ $statusMemilih == true ? 'sudah' : 'belum' }}
+                                                ikut voting
                                             </span>
                                         </div>
                                         <div class="col-auto">

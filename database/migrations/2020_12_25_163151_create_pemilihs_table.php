@@ -18,6 +18,7 @@ class CreatePemilihsTable extends Migration
             $table->bigInteger('nim');
             $table->boolean('sudah_memilih');
             $table->unsignedInteger('user_id');
+            $table->integer('pilihan_kamu')->nullable();
             $table->timestamps();
         });
     }

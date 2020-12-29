@@ -34,7 +34,8 @@
                                                 {{ $calon->visi }}
                                             </p>
                                         </div>
-                                        <div class="card-action p-4 d-flex justify-content-between">
+                                        <div class="card-action p-4 d-flex align-items-center
+                                        justify-content-between">
                                             @if ($pemilih->sudah_memilih == false)
                                                 <form method="POST"
                                                 action="{{ route('submit-pilihan', $calon->id) }}">
@@ -45,6 +46,11 @@
                                                         Pilih calon ini
                                                     </button>
                                                 </form>
+                                            @endif
+                                            @if ($pemilih->pilihan_kamu === $calon->id)
+                                                <p class="text-primary font-weight-bold mb-0">
+                                                    Kamu memilih calon ini
+                                                </p>
                                             @endif
                                             <a href="" class="btn btn-secondary">
                                                 Lihat misi
