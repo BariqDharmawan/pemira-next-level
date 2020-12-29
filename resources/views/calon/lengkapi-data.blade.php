@@ -4,6 +4,11 @@
     <div class="main-content" style="min-height: 100vh">
         @include('partial.nav')
         <div class="container-fluid mt-5">
+            @if (session('message'))
+            <div class="alert alert-success" role="alert">
+                {{ session('message') }}
+            </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -11,21 +16,26 @@
                             <h1 class="h2">Profile mu</h1>
                         </div>
                         <div class="card-body">
-                            <img  class="card-img-top" alt="foto profile"
-                            src="{{ Storage::url($profilDirimu->foto) }}">
-                            <p>Nama lengkap: {{ $profilDirimu->profile->nama }}</p>
-                            <p>Email: {{ $profilDirimu->profile->email }}</p>
+                            <img alt="foto profile" height="100" width="100"
+                            src="{{ Storage::url($profilDirimu->foto) }}" class="mb-4">
+                            <p>Nama lengkap: {{ $profilDirimu->user->nama }}</p>
+                            <p>Email: {{ $profilDirimu->user->email }}</p>
                             <p>Visi: {!! $profilDirimu->visi ?? '<b>Belum kamu isi</b>' !!}</p>
                             <p>Misi: {!! $profilDirimu->misi ?? '<b>Belum kamu isi</b>' !!}</p>
-                            <form action="{{ route('calon.update-foto') }}" method="POST">
+                            <form action="{{ route('calon.update-foto') }}" 
+                            method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <p>Foto: </p>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="foto" lang="en">
-                                    <label class="custom-file-label" for="foto">
-                                        Select file
-                                    </label>
+                                <div class="form-group">
+                                    <p>Foto: </p>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="foto" 
+                                        name="foto" required>
+                                        <label class="custom-file-label" for="foto">
+                                            Select file
+                                        </label>
+                                    </div>
                                 </div>
+                                <button type="submit" class="btn btn-primary">update profile</button>
                             </form>
                         </div>
                     </div>
@@ -36,7 +46,7 @@
                             <h1 class="h2">Masukan visi misi mu</h1>
                         </div>
                         <form class="card-body" action="{{ route('calon.submit-visi-misi') }}"
-                        method="POST">
+                        method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="visiCalon" class="text-capitalize">visi</label>

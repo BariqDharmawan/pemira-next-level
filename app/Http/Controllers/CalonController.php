@@ -8,6 +8,7 @@ use App\Models\Pemilih;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class CalonController extends Controller
 {
@@ -63,17 +64,37 @@ class CalonController extends Controller
 
     public function lihatProfile()
     {
+        $profilDirimu = Calon::where('user_id', Auth::id())->first();
         return view('calon.lengkapi-data', [
-            'profilDirimu' => Calon::where('user_id', Auth::id())->first()
+            'profilDirimu' => $profilDirimu
         ]);
+    }
+
+    public function updateFoto(Request $request)
+    {
+        $updateFoto = $request->file('foto');
+        $pathFoto = $updateFoto->store('public/files');
+        $profilCalon = Calon::where('user_id', auth()->id());
+
+        $fotoLama = $profilCalon->first()->foto;
+        if (!empty($fotoLama)) { //jika ada foto lama, apus baru update foto
+            Storage::delete($fotoLama);
+        }
+
+        Calon::where('user_id', auth()->id())->update([
+            'foto' => $pathFoto
+        ]);
+
+        return redirect()->back()->with('message', 'kamu berhasil mengupdate profile foto mu');
     }
 
     public function submitVisiMisi(Request $request)
     {
-        $inputVisiMisi = Calon::where('user_id', auth()->id())->update([
+        Calon::where('user_id', auth()->id())->update([
             'visi' => $request->visi_calon,
-            'misi' => $request->misi_calon
+            'misi' => $request->misi_calon,
         ]);
+
         return redirect()->back()->with('message', 'kamu berhasil menambahkan visi dan misi');
     }
 }
