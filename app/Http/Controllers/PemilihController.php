@@ -47,7 +47,7 @@ class PemilihController extends Controller
         return redirect()->back()->with(
             'message',
             'kamu berhasil memilih calon bernama ' .
-                User::where('id', $calon->first())->select('nama')->first()
+                $calon->first()->user->nama
         );
     }
 }

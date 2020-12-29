@@ -4,6 +4,11 @@
     <main class="main-content" style="min-height: 100vh">
         @include('partial.nav')
         <div class="container-fluid mt-5">
+            @if (session('message'))
+            <div class="alert alert-success" role="alert">
+                {{ session('message') }}
+            </div>
+            @endif
             <div class="row">
                 <div class="col">
                     <div class="card">
@@ -22,7 +27,7 @@
                                 <div class="col-6">
                                     <div class="card">
                                         <img class="rounded-circle" 
-                                        src="{{ Storage::url($calon->user->foto) }}">
+                                        src="{{ 'test.png' }}">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $calon->user->email }}</h5>
                                             <p class="card-text">
