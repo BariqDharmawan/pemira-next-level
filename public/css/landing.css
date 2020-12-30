@@ -1,0 +1,39 @@
+header {
+    position: relative;
+}
+
+header {
+    position: relative;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.overlay::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(45deg, rgba(72, 44, 191, 1) 0%, rgba(106, 198, 240, 1) 100%);
+    opacity: 0.8;
+}
+
+header>.container {
+    padding-top: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__text {
+    color: #fff;
+}
+
+.header__text * {
+    color: inherit;
+}
+
+.header__text h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
