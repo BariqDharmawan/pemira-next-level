@@ -24,12 +24,12 @@ class CalonController extends Controller
                 break;
 
             case 'calon':
-                $profilDirimu = Calon::where('user_id', auth()->id())->first();
+                $profilDirimu = Calon::where('user_id', Auth::user()->id)->first();
                 return view('calon.dashboard', ['profilDirimu' => $profilDirimu]);
                 break;
 
             case 'pemilih':
-                $profilDirimu = Pemilih::where('user_id', auth()->id())->first();
+                $profilDirimu = Pemilih::where('user_id', Auth::user()->id)->first();
                 return view('pemilih.dashboard', ['profilDirimu' => $profilDirimu]);
                 break;
         }

@@ -35,7 +35,7 @@ class PemilihController extends Controller
         ]);
     }
 
-    public function submitCalon(Request $request, $id)
+    public function submitCalon($id)
     {
 
         $calon = Calon::where('id', $id);
