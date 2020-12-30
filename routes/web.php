@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\CalonController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PemilihController;
 
-Route::view('/', 'landing');
+Route::get('/', [HomeController::class, 'index']);
 
 Auth::routes();
 

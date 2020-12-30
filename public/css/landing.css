@@ -1,8 +1,30 @@
-header {
+html {
+    scroll-behavior: smooth;
+}
+
+body {
     position: relative;
 }
 
+nav {
+    transition: all 250ms;
+    background-color: transparent;
+    width: 100%;
+    position: absolute !important;
+    top: 0;
+    z-index: 2;
+    height: 125px;
+}
+
+nav.sticky {
+    height: auto !important;
+    position: fixed !important;
+    background-color: initial;
+    background-image: linear-gradient(45deg, rgba(72, 44, 191, 1) 0%, rgba(106, 198, 240, 1) 100%);
+}
+
 header {
+    padding-top: 125px;
     position: relative;
     background-attachment: scroll;
     background-size: cover;
@@ -11,6 +33,8 @@ header {
 .overlay::before {
     content: '';
     position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%;
     background-image: linear-gradient(45deg, rgba(72, 44, 191, 1) 0%, rgba(106, 198, 240, 1) 100%);
@@ -36,4 +60,17 @@ header>.container {
 .header__text h1 {
     font-size: 3rem;
     margin-bottom: 2rem;
+}
+
+section {
+    padding: 3rem 0;
+}
+
+#tentang .container {
+    text-align: center;
+}
+
+#tentang p:last-child {
+    width: 90%;
+    margin: 0 auto;
 }
