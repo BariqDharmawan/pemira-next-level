@@ -28,6 +28,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'tambah-calon.post'
     );
     Route::delete('hapus-calon/{id}', [CalonController::class, 'hapusCalon'])->name('hapus-calon');
+    Route::get('manage-pemilih', [PemilihController::class, 'managePemilih'])->name('manage-pemilih');
+    Route::post('tambah-pemilih', [PemilihController::class, 'tambahPemilih'])->name('tambah-pemilih');
+    Route::delete('hapus-pemilih/{id}', [pemilihController::class, 'hapuspemilih'])->name('hapus-pemilih');
 });
 
 Route::prefix('calon')->name('calon.')->group(function () {
