@@ -19,10 +19,10 @@
                                 @foreach ($semuaCalon as $calon)
                                 <tr>
                                     <td>
-                                        {{ $calon->profile->nama }}
+                                        {{ $calon->user->nama }}
                                     </td>
                                     <td>
-                                        {{ $calon->profile->email }}
+                                        {{ $calon->user->email }}
                                     </td>
                                     <td class="text-right">
                                         <div class="dropdown">
@@ -35,7 +35,7 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                 <a class="dropdown-item" href="javascript:void(0);"
-                                                data-toggle="modal" data-target="#modalLihatDetail{{ Str::of($calon->profile->nama)->words(1, '')->camel()->ucfirst() }}">
+                                                data-toggle="modal" data-target="#modalLihatDetail{{ Str::of($calon->user->nama)->words(1, '')->camel()->ucfirst() }}">
                                                     Lihat detail
                                                 </a>
                                                 <a class="dropdown-item" href="#">
@@ -58,15 +58,15 @@
 @section('component')
     @foreach ($semuaCalon as $calon)
         <div class="modal fade" 
-        id="modalLihatDetail{{ Str::of($calon->profile->nama)->words(1, '')->camel()->ucfirst() }}"
+        id="modalLihatDetail{{ Str::of($calon->user->nama)->words(1, '')->camel()->ucfirst() }}"
         tabindex="-1" role="dialog" 
-        aria-labelledby="modalLihatDetail{{ Str::of($calon->profile->nama)->words(1, '')->camel()->ucfirst() }}Label" aria-hidden="true">
+        aria-labelledby="modalLihatDetail{{ Str::of($calon->user->nama)->words(1, '')->camel()->ucfirst() }}Label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" 
-                        id="modalLihatDetail{{ Str::of($calon->profile->nama)->words(1, '')->camel()->ucfirst() }}Label">
-                            Detail calon {{ Str::words($calon->profile->name, 1) }}
+                        id="modalLihatDetail{{ Str::of($calon->user->nama)->words(1, '')->camel()->ucfirst() }}Label">
+                            Detail calon {{ Str::words($calon->user->name, 1) }}
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -75,10 +75,10 @@
                     <div class="modal-body">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                Nama lengkap: {{ ucwords($calon->profile->nama) }}
+                                Nama lengkap: {{ ucwords($calon->user->nama) }}
                             </li>
                             <li class="list-group-item">
-                                Email: {{ $calon->profile->email }}
+                                Email: {{ $calon->user->email }}
                             </li>
                             <li class="list-group-item">
                                 Visi: 
