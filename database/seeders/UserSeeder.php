@@ -29,10 +29,9 @@ class UserSeeder extends Seeder
             if ($i <= 7) {
                 $profile = new User;
                 $profile->nama = 'pemilih' . ($i - 1);
-                $profile->email = "pemilih$i@email.com";
+                $profile->email = 'pemilih' . ($i - 1) . '@email.com';
                 $profile->role = 'pemilih';
                 $profile->password = Hash::make('password');
-                $profile->updated_at = null;
                 $profile->save();
 
                 Pemilih::create([
