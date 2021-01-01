@@ -91,13 +91,17 @@ class CalonController extends Controller
     public function hapusCalon($id)
     {
         $calon = Calon::findOrFail($id);
+
         $profile = User::where('id', $calon->user_id)->first();
         $profile->delete();
+
+        Storage::delete($calon->foto);
+
         $calon->delete();
 
         return redirect()->back()->with(
             'message',
-            "kamu berhasil menghapus calon dengan nama $calon->user->nama"
+            "kamu berhasil menghapus calon"
         );
     }
 
