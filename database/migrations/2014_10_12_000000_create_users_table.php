@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('email')->unique();
-            $table->string('foto')->nullable();
             $table->enum('role', ['admin', 'calon', 'pemilih'])->default('pemilih');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
