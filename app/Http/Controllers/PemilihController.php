@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Calon;
 use App\Models\Pemilih;
 use App\Models\User;
+use App\Rules\CheckPasswordValidation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -42,8 +43,7 @@ class PemilihController extends Controller
         $user = User::create([
             'nama' => request('nama'),
             'email' => request('email'),
-            'password' => Hash::make('password'),
-            'updated_at' => null
+            'password' => Hash::make('password')
         ]);
 
         Pemilih::create([
@@ -77,9 +77,21 @@ class PemilihController extends Controller
 
     public function gantiPassword()
     {
-        User::where('id', auth()->id())->update([
-            'password' => Hash::make(request('password'))
+        return view('pemilih.ganti-pw', [
+            'pemilih' => Pemilih::where('user_id', auth()->id())
         ]);
+    }
+
+    public function savePassword(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'min:8', 'max:100', new CheckPasswordValidation]
+        ]);
+
+        User::where('id', auth()->id())->update([
+            'password' => Hash::make($request->password)
+        ]);
+        Pemilih::where('user_id', auth()->id())->update(['is_password_changed' => true]);
 
         return redirect()->route('pemilih.dashboard')->with(
             'message',

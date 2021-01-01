@@ -15,7 +15,8 @@ class Pemilih extends Model
         'nim',
         'sudah_memilih',
         'user_id',
-        'pilihan_kamu'
+        'pilihan_kamu',
+        'is_password_changed'
     ];
 
     public function user()

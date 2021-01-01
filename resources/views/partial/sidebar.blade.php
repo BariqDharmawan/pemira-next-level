@@ -46,7 +46,13 @@
                         <span class="nav-link-text">Pilih calon</span>
                         </a>
                     </li>
-                    @break
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('pemilih.ganti-password') }}">
+                        <i class="ni ni-planet text-orange"></i>
+                        <span class="nav-link-text">Ganti password mu</span>
+                        </a>
+                    </li>
+                @break
                 @case('admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.lihat-calon') }}">
@@ -66,7 +72,7 @@
                             <span class="nav-link-text">Lihat pemilih</span>
                         </a>
                     </li>
-                    @break
+                @break
                 @case('calon')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('calon.lihat-profile') }}">
@@ -74,7 +80,7 @@
                         <span class="nav-link-text">Lengkapi profil</span>
                         </a>
                     </li>
-                    @break
+                @break
                     
             @endswitch
           </ul>

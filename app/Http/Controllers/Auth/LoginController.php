@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pemilih;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -29,7 +32,16 @@ class LoginController extends Controller
      */
     protected function redirectTo()
     {
-        return Auth::user()->role . '/dashboard';
+        if (
+            Auth::user()->role == 'pemilih' and Pemilih::where([
+                ['user_id', Auth::id()],
+                ['is_password_changed', false]
+            ])
+        ) {
+            return 'pemilih/ganti-password';
+        } else {
+            return Auth::user()->role . '/dashboard';
+        }
     }
 
     /**

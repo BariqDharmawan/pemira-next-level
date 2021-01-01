@@ -18,6 +18,8 @@ Route::prefix('pemilih')->name('pemilih.')->group(function () {
     Route::get('dashboard', [PemilihController::class, 'dashboard'])->name('dashboard');
     Route::get('pilih-calon', [PemilihController::class, 'pilihCalon'])->name('pilih-calon');
     Route::post('submit-calon/{id}', [PemilihController::class, 'submitCalon'])->name('submit-pilihan');
+    Route::get('ganti-password', [PemilihController::class, 'gantiPassword'])->name('ganti-password');
+    Route::put('save-password', [PemilihController::class, 'savePassword'])->name('save-password');
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
