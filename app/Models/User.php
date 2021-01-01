@@ -20,6 +20,7 @@ class User extends Authenticatable
         'nama',
         'email',
         'password',
+        'user_id'
     ];
 
     /**
@@ -43,6 +44,6 @@ class User extends Authenticatable
 
     public function pemilih()
     {
-        return $this->belongsTo(Pemilih::class, 'user_id', 'id');
+        return $this->belongsTo(Pemilih::class, 'id', 'user_id');
     }
 }
