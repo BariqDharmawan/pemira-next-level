@@ -41,7 +41,7 @@
                                                 Status memilih
                                             </h5>
                                             <span class="h2 font-weight-bold mb-0">
-                                                Kamu {{ $statusMemilih === true ? 'sudah' : 'belum' }}
+                                                Kamu {{ $statusMemilih }}
                                                 ikut voting
                                             </span>
                                         </div>

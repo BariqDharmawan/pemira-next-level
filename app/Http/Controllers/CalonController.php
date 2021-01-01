@@ -37,7 +37,10 @@ class CalonController extends Controller
 
     public function lihatCalon()
     {
-        return view('admin.lihat-calon', ['semuaCalon' => Calon::all()]);
+        return view('admin.lihat-calon', [
+            'totalSuara' => Calon::sum('jumlah_pemilih'),
+            'semuaCalon' => Calon::all()
+        ]);
     }
 
     public function tambahCalon()

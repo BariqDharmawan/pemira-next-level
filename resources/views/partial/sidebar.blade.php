@@ -57,7 +57,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.lihat-calon') }}">
                         <i class="ni ni-planet text-orange"></i>
-                        <span class="nav-link-text">Lihat calon</span>
+                        <span class="nav-link-text">Manage calon</span>
                         </a>
                     </li>
                     <li class="nav-item">
