@@ -25,6 +25,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('tambah-calon/post', [CalonController::class, 'submitCalon'])->name(
         'tambah-calon.post'
     );
+    Route::delete('hapus-calon/{id}', [CalonController::class, 'hapusCalon'])->name('hapus-calon');
 });
 
 Route::prefix('calon')->name('calon.')->group(function () {

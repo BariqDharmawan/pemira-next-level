@@ -4,6 +4,11 @@
     <div class="main-content" style="min-height: 100vh">
         @include('partial.nav')
         <div class="container-fluid mt-5">
+            @if (session('message'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col">
                     <div class="table-responsive">
@@ -39,9 +44,13 @@
                                                 data-target="#modalLihatDetail{{ Str::of($calon->user->nama)->camel()->ucfirst() }}">
                                                     Lihat detail
                                                 </a>
-                                                <a class="dropdown-item" href="#">
-                                                    Hapus calon
-                                                </a>
+                                                <form action="{{ route('admin.hapus-calon', $calon->id) }}"
+                                                method="post">
+                                                    @csrf @method('DELETE')
+                                                    <button type="submit" class="dropdown-item">
+                                                        Hapus calon
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </td>

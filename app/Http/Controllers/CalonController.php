@@ -88,6 +88,19 @@ class CalonController extends Controller
         return redirect()->back()->with('message', 'kamu berhasil mengupdate profile foto mu');
     }
 
+    public function hapusCalon($id)
+    {
+        $calon = Calon::findOrFail($id);
+        $profile = User::where('id', $calon->user_id)->first();
+        $profile->delete();
+        $calon->delete();
+
+        return redirect()->back()->with(
+            'message',
+            "kamu berhasil menghapus calon dengan nama $calon->user->nama"
+        );
+    }
+
     public function submitVisiMisi(Request $request)
     {
         Calon::where('user_id', auth()->id())->update([
