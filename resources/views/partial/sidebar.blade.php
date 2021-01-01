@@ -21,7 +21,7 @@
                         @break
                     @case('pemilih')
                         @php
-                            $goTo = route('dashboard');
+                            $goTo = route('pemilih.dashboard');
                         @endphp
                         @break
                     @case('calon')
@@ -41,7 +41,7 @@
             @switch(Auth::user()->role)
                 @case('pemilih')
                     <li class="nav-item">
-                        <a class="nav-link" href="/pilih-calon">
+                        <a class="nav-link" href="{{ route('pemilih.pilih-calon') }}">
                         <i class="ni ni-planet text-orange"></i>
                         <span class="nav-link-text">Pilih calon</span>
                         </a>

@@ -38,7 +38,7 @@
                                         justify-content-between">
                                             @if ($pemilih->sudah_memilih == false)
                                                 <form method="POST"
-                                                action="{{ route('submit-pilihan', $calon->id) }}">
+                                                action="{{ route('pemilih.submit-pilihan', $calon->id) }}">
                                                     @csrf
                                                     <input type="hidden" name="calon_id" 
                                                     value="{{ $calon->id }}" required readonly>
