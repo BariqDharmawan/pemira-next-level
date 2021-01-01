@@ -4,7 +4,7 @@
             <!-- Navbar links -->
             <ul class="navbar-nav align-items-center mr-auto">
                 <li class="nav-item font-weight-bold">
-                    <a href="/dashboard" class="text-white">Dashboard</a>
+                    <a href="{{ Auth::user()->role . '/dashboard' }}" class="text-white">Dashboard</a>
                 </li>
             </ul>
             <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">

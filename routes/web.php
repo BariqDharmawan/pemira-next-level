@@ -8,7 +8,11 @@ use App\Http\Controllers\PemilihController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Auth::routes();
+Auth::routes(['register' => false]);
+
+Route::get('/dashboard', function () {
+    return redirect(Auth::user()->role . '/dashboard');
+});
 
 Route::get('pemilih/dashboard', [PemilihController::class, 'dashboard'])->name('dashboard');
 Route::get('pilih-calon', [PemilihController::class, 'pilihCalon'])->name('pilih-calon');
