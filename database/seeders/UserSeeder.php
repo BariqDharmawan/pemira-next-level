@@ -27,17 +27,18 @@ class UserSeeder extends Seeder
         for ($i = 2; $i <= 10; $i++) {
 
             if ($i <= 7) {
-                User::create([
-                    'nama' => 'pemilih' . ($i - 1),
-                    'email' => "pemilih$i@email.com",
-                    'role' => 'pemilih',
-                    'password' => Hash::make('password'),
-                ]);
+                $profile = new User;
+                $profile->nama = 'pemilih' . ($i - 1);
+                $profile->email = "pemilih$i@email.com";
+                $profile->role = 'pemilih';
+                $profile->password = Hash::make('password');
+                $profile->updated_at = null;
+                $profile->save();
 
                 Pemilih::create([
                     'nim' => 19105110 . $i,
                     'sudah_memilih' => false,
-                    'user_id' => $i
+                    'user_id' => $profile->id
                 ]);
             } else {
                 User::create([

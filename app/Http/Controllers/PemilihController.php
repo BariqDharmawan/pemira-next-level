@@ -43,6 +43,7 @@ class PemilihController extends Controller
             'nama' => request('nama'),
             'email' => request('email'),
             'password' => Hash::make('password'),
+            'updated_at' => null
         ]);
 
         Pemilih::create([
