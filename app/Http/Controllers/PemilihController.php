@@ -12,15 +12,19 @@ use Illuminate\Support\Facades\Hash;
 
 class PemilihController extends Controller
 {
+
+    private $you;
+
     public function __construct()
     {
+        $this->you = Pemilih::where('user_id', Auth::id());
         $this->middleware('auth');
     }
 
     public function dashboard()
     {
         $totalCalon = Calon::count();
-        $statusMemilih = Pemilih::select('sudah_memilih')->where('user_id', auth()->id())->first();
+        $statusMemilih = Auth::user()->pemilih->pilihan_kamu != null ? 'sudah' : 'belum';
         return view('pemilih.dashboard', [
             'totalCalon' => $totalCalon,
             'statusMemilih' => $statusMemilih
@@ -78,7 +82,7 @@ class PemilihController extends Controller
     public function gantiPassword()
     {
         return view('pemilih.ganti-pw', [
-            'pemilih' => Pemilih::where('user_id', auth()->id())
+            'pemilih' => $this->you->first()
         ]);
     }
 
@@ -91,7 +95,8 @@ class PemilihController extends Controller
         User::where('id', auth()->id())->update([
             'password' => Hash::make($request->password)
         ]);
-        Pemilih::where('user_id', auth()->id())->update(['is_password_changed' => true]);
+
+        $this->you->update(['is_password_changed' => true]);
 
         return redirect()->route('pemilih.dashboard')->with(
             'message',
@@ -102,21 +107,19 @@ class PemilihController extends Controller
     public function pilihCalon()
     {
         $semuaCalon = Calon::all();
-        $pemilih = Pemilih::where('id', Auth::id())->first();
         return view('pemilih.pilih-calon', [
             'semuaCalon' => $semuaCalon,
-            'pemilih' => $pemilih
+            'pemilih' => Auth::user()->pemilih
         ]);
     }
 
     public function submitCalon($id)
     {
-
-        $calon = Calon::where('id', $id);
+        $calon = Calon::where('id', (int) $id);
         $calon->increment('jumlah_pemilih', 1);
 
-        Pemilih::where('user_id', Auth::id())->update([
-            'sudah_memilih' => true,
+
+        Auth::user()->pemilih->update([
             'pilihan_kamu' => $calon->first()->id
         ]);
 

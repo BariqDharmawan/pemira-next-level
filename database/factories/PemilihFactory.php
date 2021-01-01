@@ -37,7 +37,6 @@ class PemilihFactory extends Factory
 
         return [
             'nim' => $this->faker->randomElement($semuaNim),
-            'sudah_memilih' => false,
             'user_id' => $this->faker->numberBetween(1, 7)
         ];
     }

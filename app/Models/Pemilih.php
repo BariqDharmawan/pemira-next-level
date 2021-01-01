@@ -13,7 +13,6 @@ class Pemilih extends Model
     protected $with = ['user'];
     protected $fillable = [
         'nim',
-        'sudah_memilih',
         'user_id',
         'pilihan_kamu',
         'is_password_changed'

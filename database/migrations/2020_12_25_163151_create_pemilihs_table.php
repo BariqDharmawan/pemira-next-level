@@ -16,7 +16,6 @@ class CreatePemilihsTable extends Migration
         Schema::create('pemilih', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('nim');
-            $table->boolean('sudah_memilih')->default(false);
             $table->unsignedInteger('user_id');
             $table->integer('pilihan_kamu')->nullable();
             $table->boolean('is_password_changed')->default(false);
