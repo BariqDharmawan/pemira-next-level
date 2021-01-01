@@ -56,8 +56,14 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.tambah-calon.index') }}">
-                        <i class="ni ni-planet text-orange"></i>
-                        <span class="nav-link-text">Tambah calon</span>
+                            <i class="ni ni-planet text-orange"></i>
+                            <span class="nav-link-text">Tambah calon</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.manage-pemilih') }}">
+                            <i class="ni ni-planet text-orange"></i>
+                            <span class="nav-link-text">Lihat pemilih</span>
                         </a>
                     </li>
                     @break

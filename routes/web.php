@@ -14,9 +14,11 @@ Route::get('/dashboard', function () {
     return redirect(Auth::user()->role . '/dashboard');
 });
 
-Route::get('pemilih/dashboard', [PemilihController::class, 'dashboard'])->name('dashboard');
-Route::get('pilih-calon', [PemilihController::class, 'pilihCalon'])->name('pilih-calon');
-Route::post('submit-calon/{id}', [PemilihController::class, 'submitCalon'])->name('submit-pilihan');
+Route::prefix('pemilih')->name('pemilih.')->group(function () {
+    Route::get('dashboard', [PemilihController::class, 'dashboard'])->name('dashboard');
+    Route::get('pilih-calon', [PemilihController::class, 'pilihCalon'])->name('pilih-calon');
+    Route::post('submit-calon/{id}', [PemilihController::class, 'submitCalon'])->name('submit-pilihan');
+});
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', [CalonController::class, 'dashboard'])->name('dashboard');

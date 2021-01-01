@@ -7,6 +7,7 @@ use App\Models\Pemilih;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PemilihController extends Controller
 {
@@ -23,6 +24,66 @@ class PemilihController extends Controller
             'totalCalon' => $totalCalon,
             'statusMemilih' => $statusMemilih
         ]);
+    }
+
+    public function managePemilih()
+    {
+        $semuaPemilih = Pemilih::with('user')->get();
+        $total = Pemilih::count();
+
+        return view('admin.manage-pemilih', [
+            'semuaPemilih' => $semuaPemilih,
+            'totalPemilih' => $total
+        ]);
+    }
+
+    public function tambahPemilih()
+    {
+        $user = User::create([
+            'nama' => request('nama'),
+            'email' => request('email'),
+            'password' => Hash::make('password'),
+        ]);
+
+        Pemilih::create([
+            'nim' => request('nim'),
+            'user_id' => $user->id
+        ]);
+
+        return redirect()->route('admin.manage-pemilih')->with(
+            'message',
+            'Kamu berhasil menambah pemilih'
+        );
+    }
+
+    public function hapusPemilih($id)
+    {
+        $pemilih = Pemilih::findOrFail($id);
+        $profile = User::findOrFail($pemilih->user_id);
+
+        $pemilih->delete();
+        $profile->delete();
+
+        if (!is_null($pemilih->pilihan_kamu)) {
+            Calon::where('id', $pemilih->pilihan_kamu)->decrement('jumlah_pemilih');
+        }
+
+        return redirect()->route('admin.manage-pemilih')->with(
+            'message',
+            'kamu berhasil menghapus pemilih dengan nama ' . $profile->getOriginal('nama')
+        );
+    }
+
+    public function gantiPassword()
+    {
+        User::where('id', auth()->id())->update([
+            'password' => Hash::make(request('password'))
+        ]);
+
+        return redirect()->route('pemilih.dashboard')->with(
+            'message',
+            'Kamu berhasil mengganti password'
+        );
     }
 
     public function pilihCalon()

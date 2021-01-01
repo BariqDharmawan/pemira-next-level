@@ -15,13 +15,13 @@
                         <table class="table align-items-center table-dark table-flush">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th class="sort" scope="col">Nama calon</th>
-                                    <th class="sort" scope="col">Email calon</th>
+                                    <th class="sort text-center" scope="col">Nama calon</th>
+                                    <th class="sort text-center" scope="col">Email calon</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody class="list">
-                                @foreach ($semuaCalon as $calon)
+                                @forelse ($semuaCalon as $calon)
                                 <tr>
                                     <td>
                                         {{ $calon->user->nama }}
@@ -40,7 +40,7 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                 <a class="dropdown-item" href="javascript:void(0);"
-                                                data-toggle="modal" 
+                                                data-toggle="modal"
                                                 data-target="#modalLihatDetail{{ Str::of($calon->user->nama)->camel()->ucfirst() }}">
                                                     Lihat detail
                                                 </a>
@@ -55,7 +55,11 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="3" class="text-center">Tidak ada calon</td>
+                                </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

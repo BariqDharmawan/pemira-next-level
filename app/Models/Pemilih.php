@@ -10,7 +10,7 @@ class Pemilih extends Model
     use HasFactory;
 
     protected $table = 'pemilih';
-    protected $primaryKey = 'nim';
+    protected $with = ['user'];
     protected $fillable = [
         'nim',
         'sudah_memilih',
@@ -20,6 +20,6 @@ class Pemilih extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'user_id', 'id')->withDefault();
+        return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();
     }
 }
