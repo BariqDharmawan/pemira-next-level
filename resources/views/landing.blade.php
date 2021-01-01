@@ -43,7 +43,7 @@
                         $menus = [
                             [
                                 'text' => 'home',
-                                'url' => '/#home'
+                                'url' => '/'
                             ],
                             [
                                 'text' => 'tentang',
@@ -150,18 +150,18 @@
                     @php
                         $contacts = [
                             [
-                                'icon' => 'location.svg',
+                                'title' => 'location',
                                 'url' => 'maps.google.com',
                                 'text' => 'Jl. RS. Fatmawati Raya, Pd. Labu, Kec. Cilandak, 
                                         Kota Depok, Jawa Barat 12450'
                             ],
                             [
-                                'icon' => 'whatsapp.svg',
+                                'title' => 'whatsapp',
                                 'url' => 'wa.me/6285695513587',
                                 'text' => '6285695513587'
                             ],
                             [
-                                'icon' => 'email.svg',
+                                'title' => 'email',
                                 'url' => 'mailto:mpmupnveteranjakarta@gmail.com',
                                 'text' => 'mpmupnveteranjakarta@gmail.com'
                             ],
@@ -169,15 +169,14 @@
                     @endphp
                     @foreach ($contacts as $contact)
                         <div class="col-12 col-lg-3">
-                            <figure class="text-center">
-                                <img src="{{ $contact['icon'] }}" height="60"
-                                class="rounded-circle bg-primary" width="60">
-                                <figcaption class="py-3">
-                                    <a href="{{ $contact['url'] }}" class="text-default d-block">
-                                        {{ $contact['text'] }}
-                                    </a>
-                                </figcaption>
-                            </figure>
+                            <div class="py-3 text-center">
+                                <p class="text-capitalize font-weight-bold">
+                                    {{ $contact['title'] }}
+                                </p>
+                                <a href="{{ $contact['url'] }}" class="text-default d-block">
+                                    {{ $contact['text'] }}
+                                </a>
+                            </div>
                         </div>
                     @endforeach
                 </div>
