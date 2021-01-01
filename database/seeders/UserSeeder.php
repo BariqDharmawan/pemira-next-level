@@ -24,12 +24,12 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        for ($i = 1; $i <= 9; $i++) {
+        for ($i = 2; $i <= 10; $i++) {
 
             if ($i <= 7) {
-                $profile = User::create([
-                    'nama' => "user $i",
-                    'email' => "user$i@email.com",
+                User::create([
+                    'nama' => 'pemilih' . ($i - 1),
+                    'email' => "pemilih$i@email.com",
                     'role' => 'pemilih',
                     'password' => Hash::make('password'),
                 ]);
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
                     'user_id' => $i
                 ]);
             } else {
-                $profile = User::create([
+                User::create([
                     'nama' => "calon $i",
                     'email' => "calon$i@email.com",
                     'role' => 'calon',
