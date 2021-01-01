@@ -35,7 +35,8 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                 <a class="dropdown-item" href="javascript:void(0);"
-                                                data-toggle="modal" data-target="#modalLihatDetail{{ Str::of($calon->user->nama)->words(1, '')->camel()->ucfirst() }}">
+                                                data-toggle="modal" 
+                                                data-target="#modalLihatDetail{{ Str::of($calon->user->nama)->camel()->ucfirst() }}">
                                                     Lihat detail
                                                 </a>
                                                 <a class="dropdown-item" href="#">
@@ -58,14 +59,14 @@
 @section('component')
     @foreach ($semuaCalon as $calon)
         <div class="modal fade" 
-        id="modalLihatDetail{{ Str::of($calon->user->nama)->words(1, '')->camel()->ucfirst() }}"
+        id="modalLihatDetail{{ Str::of($calon->user->nama)->camel()->ucfirst() }}"
         tabindex="-1" role="dialog" 
-        aria-labelledby="modalLihatDetail{{ Str::of($calon->user->nama)->words(1, '')->camel()->ucfirst() }}Label" aria-hidden="true">
+        aria-labelledby="modalLihatDetail{{ Str::of($calon->user->nama)->camel()->ucfirst() }}Label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" 
-                        id="modalLihatDetail{{ Str::of($calon->user->nama)->words(1, '')->camel()->ucfirst() }}Label">
+                        id="modalLihatDetail{{ Str::of($calon->user->nama)->camel()->ucfirst() }}Label">
                             Detail calon {{ Str::words($calon->user->name, 1) }}
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
